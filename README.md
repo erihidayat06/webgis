@@ -1,10 +1,8 @@
-# Accurate Akun - Manage Your Business with Ease
+# WebGis - Manage Your Business with Ease
 
 | Home        | Database List | Settings    |
 | ----------- | :-----------: | ----------- |
 | ![image](#) |  ![image](#)  | ![image](#) |
-
-> Accurate Akun adalah aplikasi yang membantu Anda mengelola akun bisnis dengan mudah. Aplikasi ini menyediakan fitur untuk mengelola database, melihat laporan, dan mengatur pengaturan akun Anda.
 
 ## 📺 Demo Website:
 
