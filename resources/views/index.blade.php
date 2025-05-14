@@ -74,7 +74,7 @@
         };
         title.update = function() {
             this._div.innerHTML =
-                "<h2>Peta Transmigrasi Desa Curugluhur dan Desa Mekarsari Kecamatan Sagaranten</h2>";
+                "<h5>Peta Transmigrasi Desa Curugluhur dan Desa Mekarsari Kecamatan Sagaranten</h5>";
         };
         title.addTo(map);
         var abstract = new L.Control({
@@ -121,9 +121,9 @@
         function pop_Polygon_CGMK_WEBGIS_FIKS_1(feature, layer) {
             var popupContent =
                 '<table>\
-                                                    <tr>\
-                                                        <th scope="row">KECAMATAN</th>\
-                                                        <td>' +
+                                                        <tr>\
+                                                            <th scope="row">KECAMATAN</th>\
+                                                            <td>' +
                 (feature.properties["KECAMATAN"] !== null ?
                     autolinker.link(
                         String(feature.properties["KECAMATAN"])
@@ -132,10 +132,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">KELURAHAN</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">KELURAHAN</th>\
+                                                            <td>' +
                 (feature.properties["KELURAHAN"] !== null ?
                     autolinker.link(
                         String(feature.properties["KELURAHAN"])
@@ -144,10 +144,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">TIPEHAK</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">TIPEHAK</th>\
+                                                            <td>' +
                 (feature.properties["TIPEHAK"] !== null ?
                     autolinker.link(
                         String(feature.properties["TIPEHAK"])
@@ -156,10 +156,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">TAHUN</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">TAHUN</th>\
+                                                            <td>' +
                 (feature.properties["TAHUN"] !== null ?
                     autolinker.link(
                         String(feature.properties["TAHUN"])
@@ -168,10 +168,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">NIB</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">NIB</th>\
+                                                            <td>' +
                 (feature.properties["NIB"] !== null ?
                     autolinker.link(
                         String(feature.properties["NIB"])
@@ -180,10 +180,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">LUASTERTUL</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">LUASTERTUL</th>\
+                                                            <td>' +
                 (feature.properties["LUASTERTUL"] !== null ?
                     autolinker.link(
                         String(feature.properties["LUASTERTUL"])
@@ -192,10 +192,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">Penggunaan</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">Penggunaan</th>\
+                                                            <td>' +
                 (feature.properties["Penggunaan"] !== null ?
                     autolinker.link(
                         String(feature.properties["Penggunaan"])
@@ -204,10 +204,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">J_Tanah</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">J_Tanah</th>\
+                                                            <td>' +
                 (feature.properties["J_Tanah"] !== null ?
                     autolinker.link(
                         String(feature.properties["J_Tanah"])
@@ -216,10 +216,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">Kadar_Air</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">Kadar_Air</th>\
+                                                            <td>' +
                 (feature.properties["Kadar_Air"] !== null ?
                     autolinker.link(
                         String(feature.properties["Kadar_Air"])
@@ -228,10 +228,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">Lereng</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">Lereng</th>\
+                                                            <td>' +
                 (feature.properties["Lereng"] !== null ?
                     autolinker.link(
                         String(feature.properties["Lereng"])
@@ -240,10 +240,10 @@
                     ) :
                     "") +
                 '</td>\
-                                                    </tr>\
-                                                    <tr>\
-                                                        <th scope="row">Rekomen</th>\
-                                                        <td>' +
+                                                        </tr>\
+                                                        <tr>\
+                                                            <th scope="row">Rekomen</th>\
+                                                            <td>' +
                 (feature.properties["Rekomen"] !== null ?
                     autolinker.link(
                         String(feature.properties["Rekomen"])
@@ -252,8 +252,8 @@
                     ) :
                     "") +
                 "</td>\
-                                                    </tr>\
-                                                </table>";
+                                                        </tr>\
+                                                    </table>";
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
             layer.on("popupopen", function(e) {
                 addClassToPopupIfMedia(content, e.popup);
