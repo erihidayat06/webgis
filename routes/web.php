@@ -17,9 +17,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
 
 
 Route::get('/data/penduduk', function () {
@@ -30,6 +28,9 @@ Route::get('/data/penduduk', function () {
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/', function () {
+        return view('index');
+    });
     Route::resource('tanah', TanahController::class);
     Route::get('/dashboard', function () {
         return view('dashboard.index', [

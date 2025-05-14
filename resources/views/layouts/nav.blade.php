@@ -11,16 +11,16 @@
                     <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page"
                         href="/">Home</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ Request::is('data/penduduk') ? 'active' : '' }}" href="/data/penduduk">Data
                         penduduk</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     @guest
                         <a class="btn btn-success" href="{{ route('login') }}">Login</a>
                     @else
                         <a class="btn btn-success {{ Request::is('tanah*') ? 'active' : '' }}"
-                            href="{{ route('tanah.index') }}">Dashboard</a>
+                            href="{{ route('tanah.index') }}">{{ auth()->user()->name }}</a>
                     @endguest
                 </li>
             </ul>
