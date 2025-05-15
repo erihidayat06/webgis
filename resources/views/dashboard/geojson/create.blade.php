@@ -28,89 +28,112 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mt-3" for="nib">NIB</label>
-                                <input type="text" class="form-control" id="nib" name="nib" required>
+                                <input type="text" class="form-control @error('nib') is-invalid @enderror" id="nib"
+                                    name="nib" value="{{ old('nib') }}" required>
+                                @error('nib')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label class="mt-3" for="sertifikat">Tanggal Sertifikat</label>
-                                <input type="date" class="form-control" id="sertifikat" name="sertifikat" required>
+                                <label class="mt-3" for="tahun">Tanggal tahun</label>
+                                <input type="number" class="form-control @error('tahun') is-invalid @enderror"
+                                    id="tahun" name="tahun" value="{{ old('tahun') }}" required>
+                                @error('tahun')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label class="mt-3" for="hak_milik">Hak Milik</label>
-                                <input type="text" step="0.01" class="form-control" id="hak_milik" name="hak_milik"
-                                    required>
+                                <label class="mt-3" for="tipe_hak">Tipe Hak</label>
+                                <input type="text" step="0.01"
+                                    class="form-control @error('tipe_hak') is-invalid @enderror" id="tipe_hak"
+                                    name="tipe_hak" value="{{ old('tipe_hak') }}" required>
+                                @error('tipe_hak')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label class="mt-3" for="luas">Luas Tanah</label>
-                                <input type="number" step="0.01" class="form-control" id="luas" name="luas"
-                                    required>
+                                <input type="number" step="0.01"
+                                    class="form-control @error('luas') is-invalid @enderror" id="luas" name="luas"
+                                    value="{{ old('luas') }}" required>
+                                @error('luas')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label class="mt-3" for="desa">Desa</label>
-                                <input type="text" class="form-control" id="desa" name="desa" required>
+                                <label class="mt-3" for="kelurahan">kelurahan</label>
+                                <input type="text" class="form-control @error('kelurahan') is-invalid @enderror"
+                                    id="kelurahan" name="kelurahan" value="{{ old('kelurahan') }}" required>
+                                @error('kelurahan')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label class="mt-3" for="kecamatan">Kecamatan</label>
-                                <input type="text" class="form-control" id="kecamatan" name="kecamatan" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="nama">Nama Pemilik</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="kadar_air">Kadar Air</label>
-                                <input type="text" class="form-control" id="kadar_air" name="kadar_air"
-                                    value="{{ old('kadar_air') }}" required>
+                                <input type="text" class="form-control @error('kecamatan') is-invalid @enderror"
+                                    id="kecamatan" name="kecamatan" value="{{ old('kecamatan') }}" required>
+                                @error('kecamatan')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
-                                <label class="mt-3" for="lereng">Lereng</label>
-                                <input type="text" class="form-control" id="lereng" name="lereng"
-                                    value="{{ old('lereng') }}" required>
+                                <label for="kadar_air">Kadar Air</label>
+                                <input type="text" class="form-control @error('kadar_air') is-invalid @enderror"
+                                    id="kadar_air" name="kadar_air" value="{{ old('kadar_air') }}" required>
+                                @error('kadar_air')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="lereng">Lereng</label>
+                                <input type="text" class="form-control @error('lereng') is-invalid @enderror"
+                                    id="lereng" name="lereng" value="{{ old('lereng') }}" required>
+                                @error('lereng')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
+
                         <div class="col-md-6">
+
                             <div class="form-group">
-                                <label class="mt-3" for="nik">NIK</label>
-                                <input type="text" class="form-control" id="nik" name="nik" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="alamat">Alamat</label>
-                                <textarea class="form-control" id="alamat" name="alamat" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="tempat_lahir">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="tanggal_lahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="penggunaan_tanah">Penggunaan Tanah</label>
-                                <input type="text" class="form-control" id="penggunaan_tanah" name="penggunaan_tanah"
-                                    required>
+                                <label class="mt-3" for="penggunaan">Penggunaan Tanah</label>
+                                <input type="text" class="form-control @error('penggunaan') is-invalid @enderror"
+                                    id="penggunaan" name="penggunaan" value="{{ old('penggunaan') }}" required>
+                                @error('penggunaan')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label class="mt-3" for="jenis_tanah">Jenis Tanah</label>
-                                <input type="text" class="form-control" id="jenis_tanah" name="jenis_tanah" required>
+                                <input type="text" class="form-control @error('jenis_tanah') is-invalid @enderror"
+                                    id="jenis_tanah" name="jenis_tanah" value="{{ old('jenis_tanah') }}" required>
+                                @error('jenis_tanah')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-
-
-
                             <div class="form-group">
-                                <label class="mt-3" for="rekomendasi_tanaman">Rekomendasi Tanaman</label>
-                                <input type="text" class="form-control" id="rekomendasi_tanaman"
-                                    name="rekomendasi_tanaman" value="{{ old('rekomendasi_tanaman') }}" required>
+                                <label for="rekomendasi_tanaman">Rekomendasi Tanaman</label>
+                                <input type="text"
+                                    class="form-control @error('rekomendasi_tanaman') is-invalid @enderror"
+                                    id="rekomendasi_tanaman" name="rekomendasi_tanaman"
+                                    value="{{ old('rekomendasi_tanaman') }}" required>
+                                @error('rekomendasi_tanaman')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-
                             <div class="form-group">
-                                <label class="mt-3" for="geojson">GeoJSON (Titik Lokasi)</label>
-                                <textarea class="form-control" id="geojson" name="geojson" readonly required></textarea>
-                                <small>GeoJSON akan dihasilkan otomatis setelah menggambar pada peta.</small>
+                                <label for="geojson">GeoJSON (Titik Lokasi)</label>
+                                <textarea class="form-control @error('geojson') is-invalid @enderror" name="geojson" id="geojson" readonly
+                                    required>{{ old('geojson') }}</textarea>
+                                @error('geojson')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
+
                     <button type="submit" class="btn btn-primary mt-3">Simpan Data</button>
                 </form>
             </div>

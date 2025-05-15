@@ -17,25 +17,25 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-
-Route::get('/data/penduduk', function () {
-    $tanahs = TanahTransmigrasi::latest()->get();
-    return view('data-penduduk', compact('tanahs'));
-});
 
 
 
 Route::middleware('auth')->group(function () {
-    Route::resource('tanah', TanahController::class);
+    Route::get('/', function () {
+        return view('index');
+    });
+
+
+    Route::get('/data/penduduk', function () {
+        $tanahs = TanahTransmigrasi::latest()->get();
+        return view('data-penduduk', compact('tanahs'));
+    });
+    Route::resource('tanah', TanahController::class)->middleware('admin');
     Route::get('/dashboard', function () {
         return view('dashboard.index', [
             'user' => auth()->user(),
         ]);
-    })->middleware(['auth', 'verified'])->name('dashboard');
+    })->middleware(['auth', 'verified', 'admin'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

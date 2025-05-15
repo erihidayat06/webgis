@@ -8,9 +8,17 @@
     <div class="container py-4">
         <h5 class="mb-4">Daftar Tanah Transmigrasi</h5>
 
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control"
+                placeholder="Cari berdasarkan NIB, Desa, atau Jenis Tanah">
+        </div>
+
+
         <div class="row g-4">
             @forelse ($tanahs as $tanah)
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4 tanah-card" data-kecamatan="{{ strtolower($tanah->kecamatan) }}"
+                    data-desa="{{ strtolower($tanah->kelurahan) }}" data-nib="{{ strtolower($tanah->nib) }}"
+                    data-rekom="{{ strtolower($tanah->rekomendasi_tanaman) }}">
                     <div class="card shadow-sm h-100">
                         <div class="card-body">
 
@@ -22,15 +30,15 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Kelurahan</th>
-                                        <td>: {{ $tanah->desa }}</td>
+                                        <td>: {{ $tanah->kelurahan }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Tipe Hak</th>
-                                        <td>: {{ $tanah->hak_milik }}</td>
+                                        <td>: {{ $tanah->tipe_hak }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Tahun</th>
-                                        <td>: {{ date('Y', strtotime($tanah->sertifikat)) }}</td>
+                                        <td>: {{ date('Y', strtotime($tanah->tahun)) }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">NIB</th>
@@ -38,11 +46,11 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Luas Terdaftar</th>
-                                        <td>: {{ number_format($tanah->luas_terdaftar, 2) }} m²</td>
+                                        <td>: {{ number_format($tanah->luas, 2) }} m²</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Penggunaan</th>
-                                        <td>: {{ $tanah->penggunaan_tanah }}</td>
+                                        <td>: {{ $tanah->penggunaan }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Jenis Tanah</th>
@@ -106,6 +114,24 @@
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.tanah-card');
+
+            cards.forEach(card => {
+                const kecamatan = card.dataset.kecamatan;
+                const desa = card.dataset.desa;
+                const nib = card.dataset.nib;
+                const rekom = card.dataset.rekom;
+
+                const isMatch = kecamatan.includes(query) || desa.includes(query) || nib.includes(query) ||
+                    rekom.includes(query);
+                card.style.display = isMatch ? 'block' : 'none';
+            });
+        });
+    </script>
+
 
     <script>
         const leafletMaps = {};

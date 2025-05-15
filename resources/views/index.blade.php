@@ -62,6 +62,44 @@
         </div>
     </div>
 
+    <div id="filterContainer" class="card p-2" style="position: absolute; top: 100px; right: 10px; z-index: 1000;">
+        <strong>Filter Luas Tanah:</strong>
+        <div class="form-check d-flex align-items-center gap-2">
+            <input class="form-check-input" type="radio" name="filterLuas" id="all" value="all" checked>
+            <label class="form-check-label d-flex align-items-center" for="all">
+                <span
+                    style="background:#000; width:14px; height:14px; display:inline-block; margin-right:6px; border-radius:3px;"></span>
+                Semua
+            </label>
+        </div>
+        <div class="form-check d-flex align-items-center gap-2">
+            <input class="form-check-input" type="radio" name="filterLuas" id="lt700" value="lt700">
+            <label class="form-check-label d-flex align-items-center" for="lt700">
+                <span
+                    style="background:#3388ff; width:14px; height:14px; display:inline-block; margin-right:6px; border-radius:3px;"></span>
+                &lt; 700 m²
+            </label>
+        </div>
+        <div class="form-check d-flex align-items-center gap-2">
+            <input class="form-check-input" type="radio" name="filterLuas" id="700to1900" value="700to1900">
+            <label class="form-check-label d-flex align-items-center" for="700to1900">
+                <span
+                    style="background:#ff5733; width:14px; height:14px; display:inline-block; margin-right:6px; border-radius:3px;"></span>
+                700–1900 m²
+            </label>
+        </div>
+        <div class="form-check d-flex align-items-center gap-2">
+            <input class="form-check-input" type="radio" name="filterLuas" id="gt1900" value="gt1900">
+            <label class="form-check-label d-flex align-items-center" for="gt1900">
+                <span
+                    style="background:#33ff57; width:14px; height:14px; display:inline-block; margin-right:6px; border-radius:3px;"></span>
+                &gt; 1900 m²
+            </label>
+        </div>
+    </div>
+
+
+
     <div id="map"></div>
 
     <!-- Leaflet JS -->
@@ -127,48 +165,96 @@
                         "Satelit + Jalan + Nama Kota/Desa": satelitLengkap
                     };
 
+                    // ⬇ Tambahkan legend untuk menjelaskan warna berdasarkan luas
+                    var legend = L.control({
+                        position: 'bottomright'
+                    });
+
+                    legend.onAdd = function(map) {
+                        var div = L.DomUtil.create('div', 'info legend');
+                        var grades = [0, 700, 1900, 3000]; // batasan luas
+                        var colors = ['#3388ff', '#ff5733', '#33ff57', '#28a745']; // sesuaikan dengan logic warna
+
+                        div.innerHTML += '<strong>Luas Tanah (m²)</strong><br>';
+
+                        for (var i = 0; i < grades.length; i++) {
+                            var from = grades[i];
+                            var to = grades[i + 1];
+
+                            div.innerHTML +=
+                                '<i style="background:' + colors[i] +
+                                ';width: 18px; height: 18px; display: inline-block; margin-right: 6px;"></i> ' +
+                                from + (to ? '&ndash;' + to + '<br>' : '+');
+                        }
+
+                        return div;
+                    };
+
                     L.control.layers(baseLayers).addTo(map);
 
                     // Semua fitur untuk pencarian
                     const allFeatures = [];
 
                     // Tambahkan GeoJSON ke peta
-                    const geojsonLayer = L.geoJSON(data, {
+                    geojsonLayer = L.geoJSON(data, {
                         onEachFeature: function(feature, layer) {
                             const props = feature.properties;
                             layer.bindPopup(`
-                                <table style="border-collapse: collapse; width: 100%;">
-
-                                    <tr><td><strong>Kecamatan</strong></td><td>: ${props.kecamatan}</td></tr>
-                                    <tr><td><strong>Kelurahan</strong></td><td>: ${props.desa}</td></tr>
-                                    <tr><td><strong>Tipehak</strong></td><td>: ${props.hak_milik}</td></tr>
-                                    <tr><td><strong>Tahun</strong></td><td>: ${props.tahun}</td></tr>
-                                    <tr><td><strong>NIB</strong></td><td>: ${props.nib}</td></tr>
-                                    <tr><td><strong>Luastertul</strong></td><td>: ${props.luas} m²</td></tr>
-                                    <tr><td><strong>Penggunaan</strong></td><td>: ${props.penggunaan_tanah}</td></tr>
-                                    <tr><td><strong>Jenis tanah</strong></td><td>: ${props.jenis_tanah}</td></tr>
-                                    <tr><td><strong>Kadar Air</strong></td><td>: ${props.kadar_air}</td></tr>
-                                    <tr><td><strong>Lereng</strong></td><td>: ${props.lereng}</td></tr>
-                                    <tr><td><strong>Rekomendasi</strong></td><td>: ${props.rekomendasi_tanaman}</td></tr>
-                                </table>
-                            `);
-
-                            // Simpan untuk pencarian
+            <table style="border-collapse: collapse; width: 100%;">
+                <tr><td><strong>Kecamatan</strong></td><td>: ${props.kecamatan}</td></tr>
+                <tr><td><strong>Kelurahan</strong></td><td>: ${props.desa}</td></tr>
+                <tr><td><strong>Tipehak</strong></td><td>: ${props.hak_milik}</td></tr>
+                <tr><td><strong>Tahun</strong></td><td>: ${props.tahun}</td></tr>
+                <tr><td><strong>NIB</strong></td><td>: ${props.nib}</td></tr>
+                <tr><td><strong>Luastertul</strong></td><td>: ${props.luas} m²</td></tr>
+                <tr><td><strong>Penggunaan</strong></td><td>: ${props.penggunaan_tanah}</td></tr>
+                <tr><td><strong>Jenis tanah</strong></td><td>: ${props.jenis_tanah}</td></tr>
+                <tr><td><strong>Kadar Air</strong></td><td>: ${props.kadar_air}</td></tr>
+                <tr><td><strong>Lereng</strong></td><td>: ${props.lereng}</td></tr>
+                <tr><td><strong>Rekomendasi</strong></td><td>: ${props.rekomendasi_tanaman}</td></tr>
+            </table>
+        `);
                             allFeatures.push(layer);
                         },
                         style: function(feature) {
-                            const props = feature.properties;
-                            const luas = parseFloat(props.luas);
-
+                            const luas = parseFloat(feature.properties.luas);
                             return {
                                 color: luas < 700 ? '#3388ff' : (luas <= 1900 ? '#ff5733' : '#33ff57'),
-                                weight: 3,
+                                weight: 0.5,
                                 opacity: 1
                             };
                         }
                     }).addTo(map);
 
+
                     map.fitBounds(geojsonLayer.getBounds());
+
+                    // Radio filter handler
+                    document.querySelectorAll('input[name="filterLuas"]').forEach(radio => {
+                        radio.addEventListener('change', function() {
+                            const selected = this.value;
+
+                            geojsonLayer.clearLayers(); // Kosongkan layer lama
+
+                            const filteredFeatures = data.features.filter(feature => {
+                                const luas = parseFloat(feature.properties.luas);
+                                if (selected === 'lt700') return luas < 700;
+                                if (selected === '700to1900') return luas >= 700 && luas <=
+                                    1900;
+                                if (selected === 'gt1900') return luas > 1900;
+                                return true; // semua
+                            });
+
+                            geojsonLayer.addData(
+                                filteredFeatures); // Tambahkan kembali fitur yang lolos filter
+
+                            if (filteredFeatures.length > 0) {
+                                const bounds = geojsonLayer.getBounds();
+                                if (bounds.isValid()) map.fitBounds(bounds);
+                            }
+                        });
+                    });
+
 
                     // Fitur pencarian
                     const searchInput = document.getElementById('searchInput');

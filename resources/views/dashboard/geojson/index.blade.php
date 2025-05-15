@@ -28,11 +28,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>NIB</th>
-                                <th>Nama</th>
-                                <th>NIK</th>
                                 <th>Tempat&nbsp;/&nbsp;Tanggal Lahir</th>
-                                <th>Alamat</th>
-                                <th>Desa</th>
+                                <th>Kelurahan</th>
                                 <th>Kecamatan</th>
                                 <th>Luas&nbsp;(m²)</th>
                                 <th>Penggunaan</th>
@@ -49,15 +46,14 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $tanah->nib }}</td>
-                                    <td>{{ $tanah->nama }}</td>
-                                    <td>{{ $tanah->nik }}</td>
+
                                     <td>{{ $tanah->tempat_lahir }},
                                         {{ \Carbon\Carbon::parse($tanah->tanggal_lahir)->format('d-m-Y') }}</td>
-                                    <td>{{ $tanah->alamat }}</td>
-                                    <td>{{ $tanah->desa }}</td>
+
+                                    <td>{{ $tanah->kelurahan }}</td>
                                     <td>{{ $tanah->kecamatan }}</td>
                                     <td>{{ number_format($tanah->luas, 2) }}</td>
-                                    <td>{{ $tanah->penggunaan_tanah }}</td>
+                                    <td>{{ $tanah->penggunaan }}</td>
                                     <td>{{ $tanah->jenis_tanah }}</td>
                                     <td>{{ $tanah->kadar_air }}</td>
                                     <td>{{ $tanah->lereng }}</td>
