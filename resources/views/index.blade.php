@@ -109,7 +109,7 @@
         </div>
     </div>
 
-    <div id="map"></div>
+    <div id="map" style="margin-top: 50px"></div>
     <script src="/js/qgis2web_expressions.js"></script>
     <script src="/js/leaflet.js"></script>
     <script src="/js/L.Control.Layers.Tree.min.js"></script>

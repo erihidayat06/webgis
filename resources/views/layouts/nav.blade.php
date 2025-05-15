@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm" style="z-index: 99999">
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm fixed-top" style="z-index: 99999">
     <div class="container">
         <a class="navbar-brand" href="/">WebGis</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"

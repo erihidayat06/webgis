@@ -5,6 +5,17 @@
 @endpush
 
 @section('content')
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+    </style>
     <div class="container py-4">
         <h5 class="mb-4">Daftar Tanah Transmigrasi</h5>
 
