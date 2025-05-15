@@ -207,7 +207,7 @@
                                     <tr><td><strong>Tipehak</strong></td><td>: ${props.hak_milik}</td></tr>
                                     <tr><td><strong>Tahun</strong></td><td>: ${props.tahun}</td></tr>
                                     <tr><td><strong>NIB</strong></td><td>: ${props.nib}</td></tr>
-                                    <tr><td><strong>Luastertul</strong></td><td>: ${props.luas} m²</td></tr>
+                                    <tr><td><strong>Luas</strong></td><td>: ${props.luas} m²</td></tr>
                                     <tr><td><strong>Penggunaan</strong></td><td>: ${props.penggunaan_tanah}</td></tr>
                                     <tr><td><strong>Jenis tanah</strong></td><td>: ${props.jenis_tanah}</td></tr>
                                     <tr><td><strong>Kadar Air</strong></td><td>: ${props.kadar_air}</td></tr>
