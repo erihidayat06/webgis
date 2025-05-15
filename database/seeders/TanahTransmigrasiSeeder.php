@@ -28,7 +28,7 @@ class TanahTransmigrasiSeeder extends Seeder
                 'kecamatan' => $prop['KECAMATAN'],
                 'kelurahan' => $prop['KELURAHAN'],
                 'tipe_hak' => $prop['TIPEHAK'],
-                'tahum' => intval($prop['TAHUN']),
+                'tahun' => intval($prop['TAHUN']),
                 'nib' => $prop['NIB'],
                 'luas' => $prop['LUASTERTUL'],
                 'penggunaan' => $prop['Penggunaan'],
