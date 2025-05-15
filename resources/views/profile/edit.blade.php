@@ -1,6 +1,17 @@
 @extends('layouts.main')
 
 @section('content')
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+    </style>
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
