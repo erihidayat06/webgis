@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>WebGis</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +16,10 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 </head>
 
-<body class="bg-light font-sans text-gray-900 antialiased">
+<body
+    style="background-image: url('/assets/img/bg-main.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+    class="font-sans text-gray-900 antialiased">
+
     <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center">
         <!-- Logo -->
         <div class="mb-4">

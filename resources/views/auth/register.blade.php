@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="text-center mb-4">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" style="max-height: 80px;">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="max-width:50px;">
     </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf

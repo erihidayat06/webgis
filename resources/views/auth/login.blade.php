@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="text-center mb-4">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" style="max-width:120px;">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="max-width:50px;">
     </div>
 
     <!-- Session Status -->
