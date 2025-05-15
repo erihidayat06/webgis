@@ -47,7 +47,7 @@
         </div>
 
         <div class="d-flex justify-content-between align-items-center mt-4">
-            <a class="text-decoration-underline text-secondary" href="{{ route('login') }}">
+            <a class="text-decoration-underline text-white" href="{{ route('login') }}">
                 {{ __('Sudah register?') }}
             </a>
             <button type="submit" class="btn btn-primary ms-4">

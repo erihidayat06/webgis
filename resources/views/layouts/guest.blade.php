@@ -20,7 +20,11 @@
     style="background-image: url('/assets/img/bg-main.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
     class="font-sans text-gray-900 antialiased">
 
-    <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center">
+    <!-- Overlay transparan -->
+    <div style="position: fixed; inset: 0; background-color: rgba(77, 128, 141, 0.829); z-index: 0;"></div>
+
+    <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center"
+        style="position: relative; z-index: 1;">
         <!-- Logo -->
         <div class="mb-4">
             <a href="/">
@@ -29,7 +33,8 @@
         </div>
 
         <!-- Content -->
-        <div class="card shadow-sm w-100" style="max-width: 24rem;">
+        <div class="card shadow-sm w-100"
+            style="max-width: 24rem; background-color: rgba(2, 32, 65, 0.9); border: none; color: white;">
             <div class="card-body">
                 {{ $slot }}
             </div>
