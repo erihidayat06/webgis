@@ -37,20 +37,19 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="mt-3" for="sertifikat">Tanggal Sertifikat</label>
-                                <input type="date" class="form-control @error('sertifikat') is-invalid @enderror"
-                                    id="sertifikat" name="sertifikat"
-                                    value="{{ old('sertifikat', $tanah->sertifikat ?? '') }}" required>
-                                @error('sertifikat')
+                                <label class="mt-3" for="tahun">Tanggal tahun</label>
+                                <input type="number" class="form-control @error('tahun') is-invalid @enderror"
+                                    id="tahun" name="tahun" value="{{ old('tahun', $tanah->tahun ?? '') }}" required>
+                                @error('tahun')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="mt-3" for="hak_milik">Hak Milik</label>
+                                <label class="mt-3" for="tipe_hak">Tipe Hak</label>
                                 <input type="text" step="0.01"
-                                    class="form-control @error('hak_milik') is-invalid @enderror" id="hak_milik"
-                                    name="hak_milik" value="{{ old('hak_milik', $tanah->hak_milik ?? '') }}" required>
-                                @error('hak_milik')
+                                    class="form-control @error('tipe_hak') is-invalid @enderror" id="tipe_hak"
+                                    name="tipe_hak" value="{{ old('tipe_hak', $tanah->tipe_hak ?? '') }}" required>
+                                @error('tipe_hak')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -64,10 +63,11 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="mt-3" for="desa">Desa</label>
-                                <input type="text" class="form-control @error('desa') is-invalid @enderror"
-                                    id="desa" name="desa" value="{{ old('desa', $tanah->desa ?? '') }}" required>
-                                @error('desa')
+                                <label class="mt-3" for="kelurahan">kelurahan</label>
+                                <input type="text" class="form-control @error('kelurahan') is-invalid @enderror"
+                                    id="kelurahan" name="kelurahan" value="{{ old('kelurahan', $tanah->kelurahan ?? '') }}"
+                                    required>
+                                @error('kelurahan')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -80,14 +80,7 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="nama">Nama Pemilik</label>
-                                <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                    id="nama" name="nama" value="{{ old('nama', $tanah->nama ?? '') }}" required>
-                                @error('nama')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
+
                             <div class="form-group">
                                 <label for="kadar_air">Kadar Air</label>
                                 <input type="text" class="form-control @error('kadar_air') is-invalid @enderror"
@@ -109,46 +102,13 @@
                         </div>
 
                         <div class="col-md-6">
+
                             <div class="form-group">
-                                <label class="mt-3" for="nik">NIK</label>
-                                <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik"
-                                    name="nik" value="{{ old('nik', $tanah->nik ?? '') }}" required>
-                                @error('nik')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="alamat">Alamat</label>
-                                <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" required>{{ old('alamat', $tanah->alamat ?? '') }}</textarea>
-                                @error('alamat')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="tempat_lahir">Tempat Lahir</label>
-                                <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror"
-                                    id="tempat_lahir" name="tempat_lahir"
-                                    value="{{ old('tempat_lahir', $tanah->tempat_lahir ?? '') }}" required>
-                                @error('tempat_lahir')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="tanggal_lahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                    id="tanggal_lahir" name="tanggal_lahir"
-                                    value="{{ old('tanggal_lahir', $tanah->tanggal_lahir ?? '') }}" required>
-                                @error('tanggal_lahir')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="mt-3" for="penggunaan_tanah">Penggunaan Tanah</label>
-                                <input type="text"
-                                    class="form-control @error('penggunaan_tanah') is-invalid @enderror"
-                                    id="penggunaan_tanah" name="penggunaan_tanah"
-                                    value="{{ old('penggunaan_tanah', $tanah->penggunaan_tanah ?? '') }}" required>
-                                @error('penggunaan_tanah')
+                                <label class="mt-3" for="penggunaan">Penggunaan Tanah</label>
+                                <input type="text" class="form-control @error('penggunaan') is-invalid @enderror"
+                                    id="penggunaan" name="penggunaan"
+                                    value="{{ old('penggunaan', $tanah->penggunaan ?? '') }}" required>
+                                @error('penggunaan')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

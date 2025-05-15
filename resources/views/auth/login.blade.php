@@ -1,4 +1,8 @@
 <x-guest-layout>
+    <div class="text-center mb-4">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" style="max-width:120px;">
+    </div>
+
     <!-- Session Status -->
     @if (session('status'))
         <div class="alert alert-success mb-4" role="alert">
@@ -12,8 +16,8 @@
         <!-- Email Address -->
         <div class="mb-3">
             <label for="email" class="form-label">{{ __('Email') }}</label>
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                value="{{ old('email') }}" required autofocus autocomplete="username">
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
             @error('email')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -41,13 +45,10 @@
             </label>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center">
-            {{-- @if (Route::has('password.request'))
-                <a class="text-decoration-none" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif --}}
-
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <span>
+                Belum punya akun? <a href="{{ route('register') }}">register</a>
+            </span>
             <button type="submit" class="btn btn-primary">
                 {{ __('Log in') }}
             </button>
