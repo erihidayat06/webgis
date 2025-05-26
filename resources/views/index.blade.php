@@ -250,10 +250,21 @@
                         });
                     });
 
+                    function debounce(func, delay = 300) {
+                        let timeout;
+                        return function(...args) {
+                            clearTimeout(timeout);
+                            timeout = setTimeout(() => func.apply(this, args), delay);
+                        };
+                    }
+
+
                     // Fitur pencarian
                     const searchInput = document.getElementById('searchInput');
-                    searchInput.addEventListener('input', function() {
+                    searchInput.addEventListener('input', debounce(function() {
                         const query = this.value.toLowerCase();
+
+                        // Kosongkan pencarian: reset semua
                         if (query === '') {
                             allFeatures.forEach(layer => {
                                 geojsonLayer.resetStyle(layer);
@@ -261,12 +272,15 @@
                             });
                             return;
                         }
-                        let found = false;
+
+                        const matches = [];
+
                         allFeatures.forEach(layer => {
                             const props = layer.feature.properties;
                             const nama = props.nama?.toLowerCase() || '';
                             const nik = props.nik?.toLowerCase() || '';
                             const desa = props.desa?.toLowerCase() || '';
+
                             if (
                                 nama.includes(query) ||
                                 nik.includes(query) ||
@@ -275,18 +289,24 @@
                                 layer.setStyle({
                                     color: 'yellow'
                                 });
-                                layer.openPopup();
-                                map.fitBounds(layer.getBounds());
-                                found = true;
+                                matches.push(layer);
                             } else {
                                 geojsonLayer.resetStyle(layer);
                                 layer.closePopup();
                             }
                         });
-                        if (!found) {
+
+                        if (matches.length > 0) {
+                            const group = L.featureGroup(matches);
+                            map.fitBounds(group.getBounds());
+
+                            // Buka hanya satu popup (pertama)
+                            matches[0].openPopup();
+                        } else {
                             console.log('Data tidak ditemukan');
                         }
-                    });
+                    }, 300)); // debounce: tunggu 300ms setelah ketikan terakhir
+
 
                     // Kode di bawah ini (Polygon_CGMK_WEBGIS_FIKS_1, dsb) HARUS dipindahkan ke dalam blok ini jika ingin menggunakan variabel map yang sama
                     // Jika ingin tetap, pastikan variabel map sudah dideklarasikan sebelum digunakan

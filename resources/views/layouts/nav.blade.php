@@ -13,7 +13,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('data/penduduk') ? 'active' : '' }}" href="/data/penduduk">Data
-                        penduduk</a>
+                        Tanah</a>
 
                 </li>
 
